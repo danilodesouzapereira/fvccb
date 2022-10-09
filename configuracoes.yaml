@@ -1,0 +1,7 @@
+
+config_placas:
+  larg_placa: 1.134
+  comp_placa: 2.234
+  offset: 0.5
+  corredor: 1.0
+  kwp_placa: 0.565
