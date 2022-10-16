@@ -40,7 +40,7 @@ class PrevisaoGeracao:
         for telhado in self.layout_placas.telhados:
             # calcula a geração (MWH) do local mais próximo (para 20KWP)
             dict_geracao = self._determina_dict_geracao_mais_proximo(telhado)
-            idx_azimute = int(telhado.dados_entrada_telhado.azimute) % 5
+            idx_azimute = int(abs(telhado.dados_entrada_telhado.azimute) / 5)
             mwh_20kwp = dict_geracao['mwh_20kwp'][idx_azimute]
             # interpola ou extrapola a geração anual (MWH/ano) para a potência instalada do telhado
             telhado.mwh_ano = round(mwh_20kwp * (telhado.kwp / 20), 2)
