@@ -1,6 +1,7 @@
 
 from layout_placas import LayoutPlacas
 from previsao_geracao import PrevisaoGeracao
+from generate_report import generate_pdf_from_dict
 
 
 if __name__ == '__main__':
@@ -9,5 +10,6 @@ if __name__ == '__main__':
     # módulo que estima a geração de cada telhado (MWWH/ano)
     previsao_geracao_placas = PrevisaoGeracao(layout_placas)
     # imprime resultados em arquivo EXCEL
-    layout_placas.imprime_telhados()
-
+    lines_table_telhados = layout_placas.imprime_telhados()
+    # generate pdf file
+    generate_pdf_from_dict(lines_table_telhados)

@@ -67,7 +67,7 @@ class LayoutPlacas:
     """
     Função que imprime os resultados em arquivo EXCEL
     """
-    def imprime_telhados(self):        
+    def imprime_telhados(self) -> list:        
         all_data_export = {'nome_telhado': [], 'latitude': [], 'longitude': [], 'azimute': [], 'inclinacao': [], 
             'largura': [], 'comprimento': [], 'utilizacao_porc': [], 'layout_retrato': [], 'layout_paisagem': [], 
             'num_total_placas': [], 'kwp': [], 'mwh_ano': []}
@@ -91,6 +91,7 @@ class LayoutPlacas:
         # df = pd.DataFrame(all_data_export, columns = nomes_colunas)
         # with pd.ExcelWriter('..\\saida.xlsx', mode='a', if_sheet_exists='replace') as writer:
         #     df.to_excel (writer, sheet_name='Resultados', index=False, header=True)
+       
 
         with open('..\\saida.txt', 'w') as file:
             for nome_telhado in all_data_export['nome_telhado']:
@@ -101,3 +102,15 @@ class LayoutPlacas:
                         continue
                     file.write(f'{key}: {value[idx]}\n')
                 file.write('------------------------\n')
+
+        lines_table_telhados = []
+        for nome_telhado in all_data_export['nome_telhado']:
+            lines_table = []
+            lines_table_telhados.append(lines_table)
+            idx = all_data_export['nome_telhado'].index(nome_telhado)
+            for key, value in all_data_export.items():
+                if key == 'nome_telhado':
+                    continue
+                lines_table.append({'Telhado': key, nome_telhado: str(value[idx])})
+        
+        return lines_table_telhados
