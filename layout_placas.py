@@ -71,6 +71,13 @@ class LayoutPlacas:
         all_data_export = {'nome_telhado': [], 'latitude': [], 'longitude': [], 'azimute': [], 'inclinacao': [], 
             'largura': [], 'comprimento': [], 'utilizacao_porc': [], 'layout_retrato': [], 'layout_paisagem': [], 
             'num_total_placas': [], 'kwp': [], 'mwh_ano': []}
+        labels_dict = {'nome_telhado': 'Nome do telhado', 'latitude': 'Latitude', 'longitude': 'Longitude', 
+            'azimute': 'Azimute (graus)', 'inclinacao': 'Inclinação (graus)', 'largura': 'Largura do telhado (m)', 
+            'comprimento': 'Comprimento do telhado (m)', 'utilizacao_porc': 'Utilização do telhado (%)', 
+            'layout_retrato': 'Placas em retrato', 'layout_paisagem': 'Placas em paisagem', 
+            'num_total_placas': 'Número total de placas', 'kwp': 'Potência instalada de placas (kWp)', 
+            'mwh_ano': 'Estimativa de geração (MWh/ano)'}
+
         for telhado in self.telhados:        
             for key, value in telhado.__dict__.items():
                 if key == 'dados_entrada_telhado':
@@ -84,14 +91,10 @@ class LayoutPlacas:
                         layout_retrato = layout_retrato[0:-3]
                     all_data_export['layout_retrato'].append(layout_retrato)      
                     all_data_export['layout_paisagem'].append(value['paisagem'])     
+                elif key == 'kwp':
+                    all_data_export[key].append(round(value, 2))
                 else:
                     all_data_export[key].append(value)      
-
-        # nomes_colunas = [nome_coluna for nome_coluna, valor in all_data_export.items()]
-        # df = pd.DataFrame(all_data_export, columns = nomes_colunas)
-        # with pd.ExcelWriter('..\\saida.xlsx', mode='a', if_sheet_exists='replace') as writer:
-        #     df.to_excel (writer, sheet_name='Resultados', index=False, header=True)
-       
 
         with open('..\\saida.txt', 'w') as file:
             for nome_telhado in all_data_export['nome_telhado']:
@@ -111,6 +114,6 @@ class LayoutPlacas:
             for key, value in all_data_export.items():
                 if key == 'nome_telhado':
                     continue
-                lines_table.append({'Telhado': key, nome_telhado: str(value[idx])})
+                lines_table.append({'Telhado': labels_dict[key], nome_telhado: str(value[idx])})
         
         return lines_table_telhados

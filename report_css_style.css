@@ -1,4 +1,4 @@
-<style>* {
+* {
     /* Change your font family */
     font-family: sans-serif;
 }
@@ -60,4 +60,4 @@ h4 {
     margin-top: 0.2em;
     padding-top: 0;
     padding-bottom: 2cm;
-}</style><h1>CNS - FOTOVOLTAICO</h1><h4>Resultado de dimensionamento - Apucarana Central Oeste</h4><table class="content-table"><th>Telhado</th><th>Apucarana Central Oeste</th><tr><td>Latitude</td><td>-23.551012</td></tr><tr><td>Longitude</td><td>-51.466492</td></tr><tr><td>Azimute (graus)</td><td>75</td></tr><tr><td>Inclinação (graus)</td><td>20</td></tr><tr><td>Largura do telhado (m)</td><td>8.8</td></tr><tr><td>Comprimento do telhado (m)</td><td>36.6</td></tr><tr><td>Utilização do telhado (%)</td><td>100</td></tr><tr><td>Placas em retrato</td><td>31 , 31 , 31</td></tr><tr><td>Placas em paisagem</td><td>0</td></tr><tr><td>Número total de placas</td><td>93</td></tr><tr><td>Potência instalada de placas (kWp)</td><td>52.54</td></tr><tr><td>Estimativa de geração (MWh/ano)</td><td>73.97</td></tr></table>
+}
